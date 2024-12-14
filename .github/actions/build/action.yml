@@ -4,8 +4,8 @@ runs:
   using: composite
   steps:
     - name: Build Docker Image
-      run: docker build -t mtararujs/sample-book-app .
+      run: docker build -t kvinnika/sample-book-app .
       shell: bash
     - name: Publish docker image to docker hub
-      run: docker push mtararujs/sample-book-app 
+      run: docker push kvinnika/sample-book-app 
       shell: bash

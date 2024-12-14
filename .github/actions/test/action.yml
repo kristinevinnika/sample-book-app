@@ -8,10 +8,10 @@ runs:
   using: composite
   steps:
     - name: Pull the api test image from docker hub
-      run: docker pull mtararujs/js-api-tests
+      run: docker pull kvinnika/js-api-tests
       shell: bash
     - name: Run API tests
-      run: docker run --network=host --rm mtararujs/js-api-tests run BOOKS BOOKS_${{ inputs.environment }}
+      run: docker run --network=host --rm kvinnika/js-api-tests run BOOKS BOOKS_${{ inputs.environment }}
       shell: bash
 
 # def runApiTests(String environment){

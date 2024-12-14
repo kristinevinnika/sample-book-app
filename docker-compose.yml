@@ -1,13 +1,13 @@
 services:
   sample-book-app-dev:
     build: .
-    image: mtararujs/sample-book-app
+    image: kvinnika/sample-book-app
     container_name: sample-book-app-dev
     ports:
       - 1010:1050
   sample-book-app-stg:
     build: . 
-    image: mtararujs/sample-book-app
+    image: kvinnika/sample-book-app
     container_name: sample-book-app-stg
     ports:
       - 2020:1050
@@ -15,7 +15,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: mtararujs/sample-book-app
+    image: kvinnika/sample-book-app
     container_name: sample-book-app-prd
     ports:
       - 3030:1050

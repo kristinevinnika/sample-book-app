@@ -1,12 +1,13 @@
 pipeline {
     agent any
+    // Checks changes in repo each minute. If there are changes it performs test execution
     triggers {
         pollSCM('*/1 * * * *')
     }
     stages {
         stage('build-docker-image') {
             steps {
-                buildDockerImgage()
+                buildDockerImage()
             }
         }
         stage('deploy-dev') {
@@ -42,12 +43,12 @@ pipeline {
     }
 }
 
-def buildDockerImgage(){
+def buildDockerImage(){
     echo "Building docker image..."
-    sh "docker build -t mtararujs/sample-book-app ."
+    sh "docker build -t kvinnika/sample-book-app ."
 
     echo "Pushing image to docker registry.."
-    sh "docker push mtararujs/sample-book-app"
+    sh "docker push kvinnika/sample-book-app"
 }
 
 def deploy(String environment){
@@ -60,8 +61,8 @@ def deploy(String environment){
 
 def runApiTests(String environment){
     echo "API tests triggered on ${environment} env.."
-    sh "docker pull mtararujs/js-api-tests"
-    sh "docker run --network=host --rm mtararujs/js-api-tests run BOOKS BOOKS_${environment}"
+    sh "docker pull kvinnika/js-api-tests"
+    sh "docker run --network=host --rm kvinnika/js-api-tests run BOOKS BOOKS_${environment}"
 }
 
 
